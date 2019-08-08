@@ -30,6 +30,9 @@ on activation - the user schema in the db will be updated with the value "true" 
 then passport can recognize the user as verified account. 
 You can find smtp providers [here](https://github.com/discourse/discourse/blob/master/docs/INSTALL-email.md)
 
+
+
+
 ## built-in password reset using email
 I added an end point for your users to reset their password if they need to
 
@@ -40,13 +43,30 @@ when you login token will be generated for you and will be sent to the client wh
 ## React-frontend
 the frontend use React and built with **react-router** by default. You can add your routes in the [App.js](client/src/App.js) file 
 
-## to use 
-* simply clone the repo, add the smtp cords as described above inside [.env](./server/.env).
+# to use 
+* simply clone the repo, add the smtp cords as described below inside `/server/.env`.
+
+## .env
+```
+# .env	
+    
+    cookieParserSecret=<SECRET> 
+    JWTsecret=<SECRET>
+    nodemailerEmail=<Email for the SMTP server>
+    nodemailerPw=<Password for the SMTP server>
+    smtp=<SMTP address i.e. smtpout.europe.secureserver.net>
+    mongoUsername=<MONGO USERNAME>
+    mongoPw=<MONGO PASSWORD>
+    mongoUrl=<MONGO URL>
+    server=localhost:port // default port: 3001
+    frontEndServer=localhost:port
+
+```
 
 ## Redux 
 The repo use Redux to manage its state. To add new actions you can go `./client/src/redux/actions` And the reducers are here `./client/src/redux/reducers`
 
-**to use with your remote server dont forget to update the username and the password to your db in [.env](./server/.env)**
+**to use the client with your remote server dont forget to update the username and the password to your db in [.env](./server/.env)**
 
 * then:
 ```sh
@@ -61,11 +81,13 @@ Thats it! now your React front end run on `http://localhost:3000`. and your serv
 * setting 
 `server` inside [.env](./server/.env) to numeric address (i.e 10.0.0.11) will couse the confirmation email not to be sent. make sure to use alphabetical address
 
-# DEMO [here](https://express-react-boilerplate.herokuapp.com/)
-email: demo@demo.com
-password: demo
+# DEMO [here](https://express-react-boilerplate.herokuapp.com/) 
+### Its a free heroku server so give it a second to load
+email: demo@demo.com;
 
-you can also check the activation process by signing up new email! (:
+password: demo;
+
+**Note** You cant signup new users with the demo
 
 **pull requests are welcome (:**
 
