@@ -11,6 +11,7 @@ class Auth {
     const user = {
       username
     };
+    
     const token = jwt.sign(user, process.env.cookieParserSecret);
     return res.status(200).json({
       user,
@@ -29,7 +30,7 @@ class Auth {
         username,
         password,
         email: username,
-        active: false // change to false if you want the user to activate through email
+        active: true // change to false if you want the user to activate through email
       }),
       password,
       async (error, account) => {

@@ -63,9 +63,10 @@ app.use("/auth", auth);
 // passport initialize
 const { User } = require("./db/models/UserSchema");
 passport.use(new LocalStrategy(User.authenticate()));
+
+
 // method for authorize user,
 //it will assume the token is in header under Bearer Auth
-
 passport.use(
   new JwtStrategy(
     {

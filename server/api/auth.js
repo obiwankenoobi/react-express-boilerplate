@@ -21,12 +21,7 @@ router.post("/login", passport.authenticate("local"), Auth.login);
 // route to signup
 router.post(
   "/signup",
-  [
-    check("username").isEmail(),
-    check("password").isLength({
-      min: 8
-    })
-  ],
+  [check("username").isEmail(), check("password").isLength({ min: 8})],
   (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {

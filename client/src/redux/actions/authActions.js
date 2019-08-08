@@ -47,8 +47,23 @@ export const _signup = (username, password) => async dispatch => {
     const { data } = await apiClient.signup(username, password);
     dispatch(_isSignedup());
     console.log(data);
-  } catch (error) {
-    console.log({ error });
+    alert("user Signed")
+  } catch (err) {
+    
+    if (err.response.data.errors) {
+      err.response.data.errors.forEach(e => {
+        if (e.param === "password") {
+          alert("password must be at least 8 length")
+        }
+      });
+    } 
+    
+    if (err && err.response.data.error) {
+      if (err.response.data.error.name === "UserExistsError") {
+        alert(err.response.data.error.message)
+      } 
+    }
+    console.log({ err });
   }
 };
 
