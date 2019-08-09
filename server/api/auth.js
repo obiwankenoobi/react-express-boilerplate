@@ -56,9 +56,7 @@ router.post("/reset-password-email", Auth.resetPasswordEmail);
 // reset password
 router.post(
   "/reset-password",
-  passport.authenticate("jwt", {
-    session: false
-  }),
+  passport.authenticate("jwt", { session: false }),
   Auth.resetPassword
 );
 
