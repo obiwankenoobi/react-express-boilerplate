@@ -1,6 +1,11 @@
 # React-Express Boilerplate
 All you need to bootstrap your React-Express project. Nothing more, Nothing less.
 
+
+**note**
+To start with Typescript version clone and move to `typescript` branch
+
+
 ## Motivation
 This repo includes all the annoying part of bootstraping a project. I know there is ton of them online but nothing was as completed and all of themwere way to compleceted and over engineered. I had to spent a week just to understand how they worked. Here I include only the most important parts of any project such as:
 * authentication (through passport)
