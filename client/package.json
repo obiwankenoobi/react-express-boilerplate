@@ -3,27 +3,54 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^1.4.1",
+    "@material-ui/core": "^1.5.1",
+    "@types/babel__core": "^7.1.2",
+    "@types/babel__template": "^7.0.2",
+    "@types/jest": "^24.0.17",
+    "@types/material-ui": "^0.21.6",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.7.1",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.8.5",
+    "@types/react-redux": "^7.1.1",
+    "@types/react-router": "^5.0.3",
+    "@types/react-router-dom": "^4.3.4",
     "axios": "^0.18.1",
     "history": "4.7.2",
-    "react": "^16.6.x",
-    "react-dom": "^16.6.x",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "react-redux": "^7.0.2",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "1.1.4",
+    "react-scripts": "3.0.1",
     "react-snap": "^1.23.0",
     "react-test-renderer": "^16.6.3",
     "redux": "^4.0.1",
     "redux-auth-wrapper": "^2.1.0",
-    "redux-persist": "^5.10.0",
+    "redux-persist": "6.0.0-pre2.1",
     "redux-thunk": "^2.3.0",
-    "sweetalert2": "^7.25.6"
+    "sweetalert2": "^7.33.1",
+    "typescript": "3.5.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

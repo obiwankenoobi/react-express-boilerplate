@@ -1,14 +1,28 @@
 import React, { Component } from "react";
-import axios from "axios";
-import { Redirect } from "react-router-dom";
+import { Redirect, RouteComponentProps } from "react-router-dom";
 import ButtonMU from "@material-ui/core/Button";
 import config from "../../config";
 import "../../css/Main.css";
 import { connect } from "react-redux";
 import { _resetPassword } from "../../redux/actions/authActions";
 
-class ResetPassword extends Component {
-  constructor(props) {
+
+
+type State = {
+  password:string;
+  token:string;
+  email:string;
+  redirectToLogin:boolean;
+}
+
+
+interface Props {
+  _resetPassword:Function;
+}
+ 
+
+class ResetPassword extends Component<RouteComponentProps<any> & Props, State> {
+  constructor(props:RouteComponentProps & Props) {
     super(props);
     this.state = {
       password: "",
@@ -24,13 +38,13 @@ class ResetPassword extends Component {
     let email = this.props.match.params.email;
   }
 
-  handleInputChange = e => {
+  handleInputChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     const target = e.target;
     const value = target.value;
     const name = target.name;
     this.setState({
       [name]: value
-    });
+    } as any);
   };
 
   render() {
@@ -52,7 +66,7 @@ class ResetPassword extends Component {
           <ButtonMU
             variant="contained"
             color="primary"
-            onClick={_resetPassword}
+            onClick={() => _resetPassword()}
           >
             set password
           </ButtonMU>

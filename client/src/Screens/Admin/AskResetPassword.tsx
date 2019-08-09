@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import ButtonMU from "@material-ui/core/Button";
-import axios from "axios";
-import Swal from "sweetalert2";
 import config from "../../config";
 import "../../css/Main.css";
 import { connect } from "react-redux";
@@ -19,8 +17,18 @@ const Style = {
   }
 };
 
-class AskResetPassword extends Component {
-  constructor(props) {
+type Props = {
+  _askResetPassword:Function;
+}
+
+type State = {
+  email:string;
+  [key:string]:string;
+}
+
+
+class AskResetPassword extends Component<Props, State> {
+  constructor(props:Props) {
     super(props);
     this.state = {
       email: ""
@@ -29,7 +37,7 @@ class AskResetPassword extends Component {
 
   // get query params - this.props.match.params.redirectParam
 
-  handleInputChange = e => {
+  handleInputChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     //e.preventDefault()
 
     const target = e.target;
@@ -37,15 +45,11 @@ class AskResetPassword extends Component {
     const name = target.name;
     // updating the state with the target name as key and the value var as value
     this.setState(
-      {
-        [name]: value
-      },
-      () => {
-        if (config.__DEBUGGING__) {
+      { [name]: value } as any , () => {
+        if (config.__DEGUGGING__) {
           console.log(this.state[name]);
         }
-      }
-    );
+      });
   };
 
   render() {
@@ -66,7 +70,7 @@ class AskResetPassword extends Component {
           <ButtonMU
             variant="contained"
             color="primary"
-            onClick={_askResetPassword}
+            onClick={() => _askResetPassword()}
           >
             reset
           </ButtonMU>

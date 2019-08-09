@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import Swal from "sweetalert2";
 import ButtonMU from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import config from "../../config";
-import "../../css/Main.css";
+import "../../";
 import {
   _login,
   _signup,
@@ -13,19 +11,39 @@ import {
 } from "../../redux/actions/authActions";
 import { connect } from "react-redux";
 
-class Admin extends Component {
-  constructor(props) {
+type Props = {
+  _signup:Function;
+  _login:Function;
+  _isSignedup:Function;
+  _logout:Function;
+  isHaveAccount:boolean;
+  token:string;
+}
+
+type State = {
+  isHaveAccount:boolean;
+  password:string;
+  email:string;
+  username:string;
+  token:string;
+}
+
+class Admin extends Component<Props, State> {
+  state:State;
+
+  constructor(props:Props) {
     super(props);
 
     this.state = {
       password: "",
       email: "",
       username: "",
-      token: ""
+      token: "",
+      isHaveAccount:false
     };
   }
 
-  handleInputChange = e => {
+  handleInputChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     const target = e.target;
     const value = target.value; // if this is checkbox the value is thr checked attr , else the value is the value attr
     const name = target.name;
@@ -33,11 +51,11 @@ class Admin extends Component {
     // updating the state with the target name as key and the value var as value
     this.setState({
       [name]: value
-    });
+    } as any);
   };
 
   // removing isHaveAccount flag to show the signup
-  moveToSignup = e => {
+  moveToSignup = (e:React.ChangeEvent<HTMLInputElement>) => {
     this.setState({
       isHaveAccount: !this.state.isHaveAccount
     });
@@ -123,7 +141,7 @@ class Admin extends Component {
                     className="btn-signup"
                     variant="contained"
                     color="primary"
-                    onClick={_isSignedup}
+                    onClick={() => _isSignedup()}
                   >
                     I dont have account
                   </ButtonMU>
@@ -187,7 +205,7 @@ class Admin extends Component {
                     className="btn-signup"
                     variant="contained"
                     color="primary"
-                    onClick={_isSignedup}
+                    onClick={() => _isSignedup()}
                   >
                     I have account
                   </ButtonMU>
@@ -226,10 +244,9 @@ class Admin extends Component {
   }
 }
 
-const mapStateToProps = ({ auth: { test, isHaveAccount, token } }) => ({
-  test,
-  isHaveAccount,
-  token
+const mapStateToProps = (state:any) => ({
+  isHaveAccount:state.auth.isHaveAccount,
+  token:state.auth.token
 });
 const mapDispatchToProps = { _login, _signup, _isSignedup, _logout };
 

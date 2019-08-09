@@ -1,16 +1,29 @@
 import { actionTypes } from "../actions/authActions";
+import { AnyAction, Reducer } from "redux";
 
 export const initialState = {
   token: "",
   username: "",
-  test: "hello",
   isHaveAccount: false
 };
 
-const reducerAuth = (state = initialState, action) => {
+
+type AuthState = {
+  token:string;
+  username:string;
+  isHaveAccount:boolean;
+}
+type AuthAction = {
+  token:string;
+  isHaveAccount:boolean;
+  username:string;
+  type:string;
+}
+
+function reducerAuth(state = initialState, action:AuthAction): AuthState {
   switch (action.type) {
     case actionTypes.ADD_TOKEN:
-      console.log("adding token", action.token);
+
       return {
         ...state,
         token: action.token
@@ -24,6 +37,7 @@ const reducerAuth = (state = initialState, action) => {
 
     case actionTypes.SIGNED:
       return {
+        ...state,
         isHaveAccount: !state.isHaveAccount
       };
 
