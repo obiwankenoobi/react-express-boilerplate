@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Main from "./Screens/Main/Main";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import Home from "../src/Screens/Home/Home";
+import Home from "./Screens/Home/Home";
 import Admin from "../src/Screens/Admin/Admin";
 import AskResetPassword from "../src/Screens/Admin/AskResetPassword";
 import ResetPassword from "./Screens/Admin/ResetPassword";

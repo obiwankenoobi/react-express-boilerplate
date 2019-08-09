@@ -5,24 +5,24 @@ const instance = axios.create({
   timeout: 60000
 });
 
-const setAuthTokenInHeader = token =>
+const setAuthTokenInHeader = (token:string) =>
   (instance.defaults.headers.common.Authorization = `Bearer ${token}`);
 
-const login = (username, password) =>
+const login = (username:string, password:string) =>
   instance.post(endpoints.login, { username, password });
 
-const signup = (username, password) =>
+const signup = (username:string, password:string) =>
   instance.post(endpoints.signup, { username, password });
 
-const activate = (token, username) =>
+const activate = (token:string, username:string) =>
   instance.get(endpoints.activate(token, username));
 
 const privacyTest = () => instance.get(endpoints.privacyTest);
 
-const askResetPassword = username =>
+const askResetPassword = (username:string) =>
   instance.post(endpoints.askResetPassword, { username });
 
-const resetPassword = username =>
+const resetPassword = (username:string) =>
   instance.post(endpoints.resetPassword, { username });
 
 export default {

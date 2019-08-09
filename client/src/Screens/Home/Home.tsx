@@ -13,8 +13,7 @@ class Home extends Component {
           <Link style={{textDecoration: 'none'}} to={{pathname:'/admin'}}>
             <ButtonMU className='btn-signup' variant="contained" color="primary">Admin</ButtonMU>
           </Link>
-        <br/>
-
+          <br/>
         </div> 
 
     );

@@ -1,4 +1,5 @@
 import apiClient from "../../network/apiClient";
+import { Dispatch } from "react";
 
 export const actionTypes = {
   SIGNUP: "SIGNUP",
@@ -12,12 +13,12 @@ export const actionTypes = {
   SIGNED: "SIGNED"
 };
 
-export const _setUsername = username => ({
+export const _setUsername = (username:string) => ({
   type: actionTypes.ADD_USERNAME,
   username
 });
 
-export const _addToken = token => ({
+export const _addToken = (token:string) => ({
   type: actionTypes.ADD_TOKEN,
   token
 });
@@ -30,7 +31,7 @@ export const _logout = () => ({
   type: actionTypes.LOGOUT
 });
 
-export const _login = (username, password) => async dispatch => {
+export const _login = (username:string, password:string) => async (dispatch:Dispatch<any>) => {
   try {
     const { data } = await apiClient.login(username, password);
     console.log(data);
@@ -42,7 +43,7 @@ export const _login = (username, password) => async dispatch => {
   }
 };
 
-export const _signup = (username, password) => async dispatch => {
+export const _signup = (username:string, password:string) => async (dispatch:Dispatch<any>) => {
   try {
     const { data } = await apiClient.signup(username, password);
     dispatch(_isSignedup());
@@ -51,7 +52,7 @@ export const _signup = (username, password) => async dispatch => {
   } catch (err) {
     
     if (err.response.data.errors) {
-      err.response.data.errors.forEach(e => {
+      err.response.data.errors.forEach((e:any) => {
         if (e.param === "password") {
           alert("password must be at least 8 length")
         }
@@ -67,7 +68,7 @@ export const _signup = (username, password) => async dispatch => {
   }
 };
 
-export const _activate = () => async (dispatch, getState) => {
+export const _activate = () => async (dispatch:Dispatch<any>, getState:Function) => {
   const { token, username } = getState().auth;
 
   try {
@@ -77,7 +78,7 @@ export const _activate = () => async (dispatch, getState) => {
   }
 };
 
-export const _askResetPassword = () => async (dispatch, getState) => {
+export const _askResetPassword = () => async (dispatch:Dispatch<any>, getState:Function) => {
   const { username } = getState().auth;
   try {
     const { data } = await apiClient.askResetPassword(username);
@@ -86,7 +87,7 @@ export const _askResetPassword = () => async (dispatch, getState) => {
   }
 };
 
-export const _resetPassword = () => async (dispatch, getState) => {
+export const _resetPassword = () => async (dispatch:Dispatch<any>, getState:Function) => {
   const { username } = getState().auth;
   try {
     const { data } = await apiClient.resetPassword(username);

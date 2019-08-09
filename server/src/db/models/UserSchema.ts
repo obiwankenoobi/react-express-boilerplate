@@ -10,7 +10,7 @@ import mongoose, {
  }                                from "mongoose"
 import uniqueValidator            from "mongoose-unique-validator"
 import passportLocalMongoose      from 'passport-local-mongoose';
-import passport = require('passport');
+
 
 
 interface IUser extends PassportLocalDocument {
@@ -23,11 +23,10 @@ interface IUser extends PassportLocalDocument {
   password:string;
 }
 
-interface IUserModel<T extends PassportLocalDocument> extends PassportLocalModel<T> {
+interface IUserModel<T extends PassportLocalDocument> extends PassportLocalModel<T> {}
 
-}
 
-const UserSchema:PassportLocalSchema = new mongoose.Schema({
+const UserSchema:PassportLocalSchema = new Schema({
   email: {
     type: String,
     index: true,
