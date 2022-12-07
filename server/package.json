@@ -12,7 +12,7 @@
     "ddos": "^0.1.31",
     "debug": "~2.6.9",
     "dotenv": "^8.0.0",
-    "express": "~4.15.5",
+    "express": "~4.17.3",
     "express-rate-limit": "^5.0.0",
     "express-session": "^1.15.6",
     "express-validator": "^5.3.1",
